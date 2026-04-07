@@ -6,18 +6,18 @@ categorias = {
                'm4v', 'vob', 'ts', 'ogv', 'f4v'],
 
     'imagens': ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'tiff', 'tif', 'webp', 'heic', 'svg',
-                'raw', 'psd', 'ico'],
+                'raw', 'psd', 'ico','avif','jfif'],
 
     'executaveis': ['exe', 'msi', 'bat', 'cmd', 'sh', 'jar', 'apk', 'app', 'deb',
                     'rpm', 'bin'],
 
     'documentos': ['txt', 'doc', 'docx', 'odt', 'pdf', 'rtf', 'tex', 'log', 'md', 'csv',
-                   'json', 'xml', 'yaml', 'yml'],
+                   'json', 'xml', 'yaml', 'yml','xlsx','xls','ppt','pptx','ods','odp'],
 
     'arquivos_compactados': ['zip', 'rar', '7z', 'tar', 'gz', 'bz2', 'iso', 'dmg'],
 
     'scripts': ['py', 'js', 'html', 'css', 'java', 'c', 'cpp', 'cs', 'rb', 'php', 'go',
-                'rs', 'swift']
+                'rs', 'swift','htm']
 
 }
 

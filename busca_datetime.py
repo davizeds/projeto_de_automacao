@@ -1,21 +1,16 @@
-from colocar_caminho import pegar_caminho
 import os
 from datetime import datetime
 from dicionario import categorias
 
-def escolhendo_pasta():
+def escolhendo_pasta(caminho):
     while True:
         pasta_escolhida = input( 'escolha sua pasta' ).lower()
         if pasta_escolhida in categorias:
-            caminho_da_pasta_escolhida=os.path.join(pegar_caminho(), pasta_escolhida)
+            caminho_da_pasta_escolhida=os.path.join(caminho,pasta_escolhida)
             return caminho_da_pasta_escolhida
         else: print('pasta nao encontrada ou digitada errado')
 
-pastas=escolhendo_pasta()
-print( os.listdir( pastas ) )
-arquivos_da_pasta=( os.listdir( pastas ) )
-
-def conferimento_de_dia():
+def conferimento_de_dia(pastas,arquivos_da_pasta):
     while True:
         dia_desejado=int(input('dia desejado'))
         encontrou=buscar_day(arquivos_da_pasta,dia_desejado,pastas)
@@ -37,7 +32,7 @@ def buscar_day(arquivos_da_pasta,dia_desejado,pastas):
             encontrou = True
     return encontrou
 
-def conferimento_de_mes():
+def conferimento_de_mes(pastas,arquivos_da_pasta):
     while True:
         mes_desejado=int(input('mes desejado'))
         encontrou=buscar_mes(arquivos_da_pasta,mes_desejado,pastas)
@@ -61,7 +56,7 @@ def buscar_mes(arquivos_da_pasta,mes_desejado,pastas):
             encontrou = True
     return encontrou
 
-def conferimento_de_ano():
+def conferimento_de_ano(pastas,arquivos_da_pasta):
     while True:
         ano_desejado=int(input('ano desejado'))
         encontrou=buscar_ano(arquivos_da_pasta,ano_desejado,pastas)
@@ -83,7 +78,7 @@ def buscar_ano(arquivos_da_pasta,ano_desejado,pastas):
             encontrou = True
     return encontrou
 
-def confermineto_data_completa():
+def conferimento_data_completa(pastas, arquivos_da_pasta):
     while True:
         dia_desejado = int( input( 'dia desejado' ) )
         mes_desejado = int( input( 'mes desejado' ) )
@@ -108,3 +103,37 @@ def buscar_data_completa(arquivos_da_pasta,dia_desejado,mes_desejado,ano_desejad
             print( documentos, data_convertida )
             encontrou = True
     return encontrou
+
+def escolher_tipo_de_busca(pastas,arquivos_da_pasta):
+    while True:
+        print (print(
+    '\nEscolha o tipo de busca que você deseja:\n'
+    '1 - por dia\n'
+    '2 - por mês\n'
+    '3 - por ano\n'
+    '4 - data completa\n'))
+
+        escolha_do_tipo=int(input('escolha o numero'))
+        if   escolha_do_tipo == 1:
+            return conferimento_de_dia(pastas,arquivos_da_pasta)
+        elif escolha_do_tipo == 2:
+            return conferimento_de_mes(pastas,arquivos_da_pasta)
+        elif escolha_do_tipo == 3:
+            return conferimento_de_ano(pastas,arquivos_da_pasta)
+        elif escolha_do_tipo == 4:
+            return conferimento_data_completa( pastas, arquivos_da_pasta )
+        else:
+            print ('essa respota nao existe')
+            continuar=input( 'quer continuar (s/n)' ).lower()
+            if continuar == 'n':
+                break
+
+def quer_buscar(pastas,arquivos_da_pasta):
+    while True:
+        print('quer buscar por data especifica?')
+        pergunta=input('(s/n)').lower()
+        if pergunta=='s':
+            return escolher_tipo_de_busca(pastas,arquivos_da_pasta)
+        elif pergunta=='n':
+            break
+        else: print ('erro, responda apenas com s/n')
